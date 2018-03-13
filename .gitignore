@@ -1,4 +1,6 @@
 build
+Sample/build
+Sample/Assets/*
 x64
 .vscode
 CMakeFiles
