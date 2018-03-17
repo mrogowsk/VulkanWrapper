@@ -332,7 +332,7 @@ public:
         : elementCount_(size)
         , ptrType_(true)
     {
-        ptrs_ = &*std::cbegin(elements);
+        ptrs_ = &*std::cbegin(ptrs);
     }
 
     Span2(const std::vector<T> &elements)
@@ -343,7 +343,7 @@ public:
     }
 
     Span2(const std::vector<const T*> &ptrs)
-        : elementCount_(static_cast<uint32_t>(std::cend(elements) - std::cbegin(elements)))
+        : elementCount_(static_cast<uint32_t>(std::cend(ptrs) - std::cbegin(ptrs)))
         , ptrType_(true)
     {
         ptrs_ = &*std::cbegin(ptrs);
@@ -2107,7 +2107,7 @@ class PhysicalDevice
     bool GetWin32PresentationSupport(uint32_t queueFamilyIndex) const;
 #endif
 #ifdef VK_USE_PLATFORM_XLIB_KHR
-    bool GetXlibPresentationSupport(uint32_t queueFamilyIndex) const;
+    bool GetXlibPresentationSupport(uint32_t queueFamilyIndex, Display* dpy, VisualID visualID) const;
 #endif
     Device CreateDevice(const Span<QueueCreateInfo> &queueCreateInfo = QueueCreateInfo(),
                         const Span<std::string> &enabledExtensions = {},

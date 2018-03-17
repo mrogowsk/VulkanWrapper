@@ -22,6 +22,8 @@ SOFTWARE.
 
 #include "VulkanWrapper.h"
 
+#include <cstring>
+
 #include "Error.h"
 
 namespace vkw
