@@ -35,6 +35,7 @@ ADD_LIBRARY(VulkanWrapper Include/VulkanWrapper.h
                           Src/Semaphore.cpp
                           Src/Swapchain.cpp)
 
+set_property(TARGET VulkanWrapper PROPERTY POSITION_INDEPENDENT_CODE ON)
 target_compile_features(VulkanWrapper PUBLIC cxx_std_17)
 if(WIN32)
     target_link_libraries(VulkanWrapper ${Vulkan_LIBRARIES})
