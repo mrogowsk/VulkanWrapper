@@ -672,7 +672,7 @@ Semaphore Device::createSemaphoreExt(const void *pNext, VkPipelineStageFlags pip
     VkSemaphoreCreateInfo createInfo = {VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO, pNext, flags};
     VkSemaphore semaphore;
     VK_CALL(vkCreateSemaphore(device_, &createInfo, nullptr, &semaphore));
-    return Semaphore(device_, semaphore);
+    return Semaphore(device_, semaphore, pipelineStageFlag);
 }
 
 Fence Device::CreateFence(VkFenceCreateFlags flags) const
