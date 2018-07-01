@@ -2159,7 +2159,6 @@ class Instance
     Surface CreateXlibSurfaceExt(const void *pNext, Display *dpy, Window window) const;
 #endif
 
-#if defined _DEBUG || !defined(NDEBUG)
     // Creates a debug report callback with an internal call back function
     // Requires the VK_EXT_debug_report extension
     void CreateDebugReportCallback(VkDebugReportFlagsEXT flags = (VK_DEBUG_REPORT_ERROR_BIT_EXT |
@@ -2168,14 +2167,11 @@ class Instance
                                                                   VK_DEBUG_REPORT_INFORMATION_BIT_EXT));
     // Requires the VK_EXT_debug_report extension
     void CreateDebugReportCallback(const VkDebugReportCallbackCreateInfoEXT &createInfo);
-#endif
 
   private:
 
     Impl::DispatchableObject<VkInstance, vkDestroyInstance> instance_;
-#if defined _DEBUG || !defined(NDEBUG)
     std::unique_ptr<void, std::function<void(void*)>> debugReportCallback_ = std::unique_ptr<void, std::function<void(void*)>>(nullptr, [](void*) {});
-#endif
 }; // class Instance
 
 struct ApplicationInfo

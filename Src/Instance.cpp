@@ -22,10 +22,8 @@ SOFTWARE.
 
 #include "VulkanWrapper.h"
 
-#if defined _DEBUG || !defined(NDEBUG)
 #include <iostream>
 #include <sstream>
-#endif
 
 #ifdef VK_USE_PLATFORM_WIN32_KHR
 #include <Windows.h>
@@ -35,8 +33,6 @@ SOFTWARE.
 
 namespace
 {
-
-#if defined _DEBUG || !defined(NDEBUG)
 
 VKAPI_ATTR VkBool32 VKAPI_CALL StandardDebugReportCallback(
     VkDebugReportFlagsEXT flags,
@@ -80,7 +76,6 @@ VKAPI_ATTR VkBool32 VKAPI_CALL StandardDebugReportCallback(
     return VK_FALSE;
 }
 
-#endif // #if defined _DEBUG || !defined(NDEBUG)
 } // namespace
 
 namespace vkw
@@ -159,7 +154,6 @@ Surface Instance::CreateXlibSurfaceExt(const void *pNext, Display *dpy, Window w
 }
 #endif
 
-#if defined _DEBUG || !defined(NDEBUG)
 void Instance::CreateDebugReportCallback(VkDebugReportFlagsEXT flags)
 {
     assert(instance_);
@@ -189,7 +183,6 @@ void Instance::CreateDebugReportCallback(const VkDebugReportCallbackCreateInfoEX
             vkDestroyDebugReportCallbackEXT(instance_, static_cast<VkDebugReportCallbackEXT>(debugReportCallback), nullptr);
         }});
 }
-#endif
 
 std::vector<PhysicalDevice> Instance::EnumeratePhysicalDevices() const
 {
