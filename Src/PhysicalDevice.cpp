@@ -179,10 +179,10 @@ bool PhysicalDevice::GetWin32PresentationSupport(uint32_t queueFamilyIndex) cons
 #endif
 
 #ifdef VK_USE_PLATFORM_XLIB_KHR
-bool PhysicalDevice::GetXlibPresentationSupport(uint32_t queueFamilyIndex) const
+bool PhysicalDevice::GetXlibPresentationSupport(uint32_t queueFamilyIndex, Display* dpy, VisualID visualID) const
 {
     assert(device_);
-    return vkGetPhysicalDeviceXlibPresentationSupportKHR(device_, queueFamilyIndex) != 0;
+    return vkGetPhysicalDeviceXlibPresentationSupportKHR(device_, queueFamilyIndex, dpy, visualID) != 0;
 }
 #endif
 
